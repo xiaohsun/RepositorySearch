@@ -109,8 +109,7 @@
 		2896F6332C2A745600C5A576 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2896F61B2C29BBE100C5A576 /* RepoListViewController.swift */,
-				2896F62D2C29D0CA00C5A576 /* RepoListTableViewCell.swift */,
+				2896F6462C2B077B00C5A576 /* RepoListViewController */,
 				2896F6412C2AB30200C5A576 /* DetailViewController */,
 			);
 			path = Views;
@@ -126,6 +125,15 @@
 				2896F6442C2AB56400C5A576 /* OtherInfoTableViewCell.swift */,
 			);
 			path = DetailViewController;
+			sourceTree = "<group>";
+		};
+		2896F6462C2B077B00C5A576 /* RepoListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2896F61B2C29BBE100C5A576 /* RepoListViewController.swift */,
+				2896F62D2C29D0CA00C5A576 /* RepoListTableViewCell.swift */,
+			);
+			path = RepoListViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

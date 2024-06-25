@@ -39,34 +39,33 @@ class RepoListViewController: UIViewController {
     
     private func fetchData() {
         if let text = searchBar.text {
+            viewModel.repositories.send([])
             viewModel.fetchRepositories(query: text)
-            viewModel.repositories.sink { [weak self] _ in
-                self?.repoListTableView.reloadData()
-                self?.clearSearchBar()
-                self?.refresher.endRefreshing()
-            }.store(in: &cancellables)
         }
     }
     
     @objc private func refreshToLoad(){
-        fetchData()
+        if searchBar.text == "" {
+            showAlert()
+        } else {
+            fetchData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.refresher.endRefreshing()
+            }
+        }
     }
     
-    private func clearSearchBar() {
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-    }
-    
-    private func addSearchBar() {
-        repoListTableView.tableHeaderView = searchBar
-    }
-    
-    private func setUpRefresher() {
-        repoListTableView.addSubview(refresher)
+    private func combineRepositories() {
+        viewModel.repositories.sink { [weak self] _ in
+            self?.repoListTableView.reloadData()
+            self?.searchBar.resignFirstResponder()
+        }.store(in: &cancellables)
     }
     
     private func setupUI() {
         view.addSubview(repoListTableView)
+        repoListTableView.addSubview(refresher)
+        repoListTableView.tableHeaderView = searchBar
         
         NSLayoutConstraint.activate([
             repoListTableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -76,12 +75,21 @@ class RepoListViewController: UIViewController {
         ])
     }
     
+    @objc private func showAlert() {
+        let alert1 = UIAlertController(title: "Oops!", message: "The data couldn't be read because it is missing.", preferredStyle: .alert)
+        
+        alert1.addAction(UIAlertAction(title: "Ok", style: .default, handler: { [weak self] _ in
+            self?.refresher.endRefreshing()
+            alert1.dismiss(animated: true)
+        }))
+        
+        present(alert1, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
-        addSearchBar()
-        setUpRefresher()
+        combineRepositories()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,12 +112,13 @@ extension RepoListViewController: UITableViewDelegate, UITableViewDataSource {
         let name = viewModel.repositories.value[indexPath.row].fullName
         let description = viewModel.repositories.value[indexPath.row].description
         let imageURL = viewModel.repositories.value[indexPath.row].owner.avatarURL
-        cell.update(repositoryName: name, description: description, imageURL: imageURL!)
+        cell.update(repositoryName: name, description: description, imageURL: imageURL ?? "")
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let detailVC = DetailViewController()
         detailVC.viewModel.repository = viewModel.repositories.value[indexPath.row]
         navigationController?.pushViewController(detailVC, animated: true)
@@ -119,6 +128,12 @@ extension RepoListViewController: UITableViewDelegate, UITableViewDataSource {
 extension RepoListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         fetchData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            viewModel.repositories.send([])
+        }
     }
 }
 

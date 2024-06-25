@@ -29,42 +29,6 @@ class DetailViewController: UIViewController {
         return tableView
     }()
     
-    lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-    
-    lazy var repositoryNamelabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.text = "Hi"
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        
-        return label
-    }()
-    
-    lazy var writtenInlabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Hi"
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        
-        return label
-    }()
-    
-    lazy var descriptionlabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 3
-        label.text = "Hi"
-        label.font = .systemFont(ofSize: 14)
-        
-        return label
-    }()
-    
     func reloadData() {
         detailTableView.reloadData()
     }
@@ -131,7 +95,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
               let repo = viewModel.repository
         else { return UITableViewHeaderFooterView() }
         
-        header.update(imageURL: repo.owner.avatarURL!)
+        header.update(imageURL: repo.owner.avatarURL ?? "")
         
         return header
     }

@@ -16,7 +16,8 @@ class RepoListViewModel {
     func fetchRepositories(query: String) {
         
         guard let url = URL(string: "https://api.github.com/search/repositories?q=\(query)") else {
-            fatalError("Invalid URL")
+            print("Invalid URL")
+            return
         }
         
         var request = URLRequest(url: url)
@@ -32,20 +33,16 @@ class RepoListViewModel {
                       (200...299).contains(httpResponse.statusCode) else {
                     throw URLError(.badServerResponse)
                 }
-                let content = String(data: data, encoding: .utf8)
-                // print(content)
                 return data
             }
             .decode(type: SearchResult.self, decoder: JSONDecoder())
             .map { $0.items }
             .catch { error -> Just<[Item]> in
-                            print("Decoding error: \(error)")
-                            return Just([])
-                        }
-            .replaceError(with: [])
+                print("Decoding error: \(error)")
+                return Just([])
+            }
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] repositories in
-                // print(repositories)
                 self?.repositories.send(repositories)
             })
             .store(in: &subscriptions)

@@ -35,7 +35,7 @@ class OtherInfoTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Hi"
+        label.text = "0 watchers"
         
         return label
     }()
@@ -44,7 +44,7 @@ class OtherInfoTableViewCell: UITableViewCell {
         contentView.addSubview(infoLabel)
         
         NSLayoutConstraint.activate([
-            infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             infoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             infoLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
@@ -52,6 +52,7 @@ class OtherInfoTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         setupUI()
     }
     

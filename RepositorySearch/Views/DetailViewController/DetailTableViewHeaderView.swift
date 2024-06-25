@@ -23,10 +23,10 @@ class DetailTableViewHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(iconImageView)
         
         NSLayoutConstraint.activate([
-            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            iconImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            iconImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor)
         ])
     }

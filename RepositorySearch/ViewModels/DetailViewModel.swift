@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 class DetailViewModel {
-    //var repository = CurrentValueSubject<Repository?, Never>(nil)
     var repository: Item?
 }
 

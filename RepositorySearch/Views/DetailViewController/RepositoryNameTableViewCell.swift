@@ -14,8 +14,9 @@ class RepositoryNameTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Hi"
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.text = "Name"
+        label.font = .systemFont(ofSize: 26, weight: .heavy)
+        label.textAlignment = .center
         
         return label
     }()
@@ -24,7 +25,8 @@ class RepositoryNameTableViewCell: UITableViewCell {
         contentView.addSubview(repositoryNameLabel)
         
         NSLayoutConstraint.activate([
-            repositoryNameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            repositoryNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            repositoryNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             repositoryNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
             repositoryNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
         ])
@@ -32,6 +34,7 @@ class RepositoryNameTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         setupUI()
     }
     

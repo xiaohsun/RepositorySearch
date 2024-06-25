@@ -29,7 +29,7 @@ class RepoListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "Hi"
+        label.text = "name"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         
         return label
@@ -39,7 +39,7 @@ class RepoListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 3
-        label.text = "Hi"
+        label.text = "description"
         label.font = .systemFont(ofSize: 14)
         
         return label
@@ -50,7 +50,6 @@ class RepoListTableViewCell: UITableViewCell {
         contentView.addSubview(containerView)
         containerView.addSubview(repositoryNameLabel)
         containerView.addSubview(descriptionLabel)
-        
         
         NSLayoutConstraint.activate([
             iconImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -66,6 +65,7 @@ class RepoListTableViewCell: UITableViewCell {
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
             repositoryNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            repositoryNameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -5),
             repositoryNameLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -5),
             
             descriptionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
