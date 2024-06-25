@@ -82,48 +82,56 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-//        viewModel.repository.sink { repo in
-//            
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.title = viewModel.repository?.owner.login
     }
 }
 
 extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        2 + InfoCellProperty.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryNameTableViewCell.reuseIdentifier, for: indexPath) as? RepositoryNameTableViewCell, let repo = viewModel.repository 
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryNameTableViewCell.reuseIdentifier, for: indexPath) as? RepositoryNameTableViewCell, let repo = viewModel.repository
             else { return UITableViewCell() }
             
-            cell.update(repositoryName: repo.name)
+            cell.update(repositoryName: repo.fullName)
             
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: LanguageStarTableViewCell.reuseIdentifier, for: indexPath) as? LanguageStarTableViewCell, let repo = viewModel.repository
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: LanguageStarTableViewCell.reuseIdentifier, for: indexPath) as? LanguageStarTableViewCell,
+                  let repo = viewModel.repository
             else { return UITableViewCell() }
             
-            // cell.update(language:star: <#T##Int#>)
+            if let language = repo.language, let star = repo.stargazersCount {
+                cell.update(language: language, star: star)
+            }
             
             return cell
         default:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherInfoTableViewCell.reuseIdentifier, for: indexPath) as? OtherInfoTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherInfoTableViewCell.reuseIdentifier, for: indexPath) as? OtherInfoTableViewCell,
+                  let repo = viewModel.repository
+            else { return UITableViewCell() }
+            
+            let infoType = InfoCellProperty.allCases[indexPath.row - 2]
+            cell.update(info: infoType.displayString(for: repo))
+            
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailTableViewHeaderView.reuseIdentifier) as? DetailTableViewHeaderView else {
-            return UITableViewHeaderFooterView()
-        }
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: DetailTableViewHeaderView.reuseIdentifier) as? DetailTableViewHeaderView,
+              let repo = viewModel.repository
+        else { return UITableViewHeaderFooterView() }
         
+        header.update(imageURL: repo.owner.avatarURL!)
         
         return header
     }

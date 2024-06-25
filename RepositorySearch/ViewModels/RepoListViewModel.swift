@@ -11,7 +11,7 @@ import Combine
 class RepoListViewModel {
     
     private var subscriptions = Set<AnyCancellable>()
-    var repositories = CurrentValueSubject<[Repository], Never>([])
+    var repositories = CurrentValueSubject<[Item], Never>([])
     
     func fetchRepositories(query: String) {
         
@@ -32,13 +32,20 @@ class RepoListViewModel {
                       (200...299).contains(httpResponse.statusCode) else {
                     throw URLError(.badServerResponse)
                 }
+                let content = String(data: data, encoding: .utf8)
+                // print(content)
                 return data
             }
             .decode(type: SearchResult.self, decoder: JSONDecoder())
             .map { $0.items }
+            .catch { error -> Just<[Item]> in
+                            print("Decoding error: \(error)")
+                            return Just([])
+                        }
             .replaceError(with: [])
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] repositories in
+                // print(repositories)
                 self?.repositories.send(repositories)
             })
             .store(in: &subscriptions)

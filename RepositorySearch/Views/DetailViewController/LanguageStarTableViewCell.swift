@@ -55,7 +55,7 @@ class LanguageStarTableViewCell: UITableViewCell {
 
 extension LanguageStarTableViewCell {
     func update(language: String, star: Int) {
-        languageLabel.text = language
+        languageLabel.text = "Written in \(language)"
         starLabel.text = "\(star) stars"
     }
 }

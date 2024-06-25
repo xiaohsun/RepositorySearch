@@ -7,6 +7,27 @@
 
 import UIKit
 
+enum InfoCellProperty: CaseIterable {
+    case watchers
+    case forks
+    case openIssues
+    
+    func displayString(for repo: Item) -> String {
+        switch self {
+        case .watchers:
+            return "\(repo.watchers ?? 0) watchers"
+        case .forks:
+            return "\(repo.forks ?? 0) forks"
+        case .openIssues:
+            return "\(repo.openIssues ?? 0) open issues"
+        }
+    }
+    
+    static var allCases: [InfoCellProperty] {
+        return [.watchers, .forks, .openIssues]
+    }
+}
+
 class OtherInfoTableViewCell: UITableViewCell {
     static let reuseIdentifier = "\(OtherInfoTableViewCell.self)"
     
@@ -15,7 +36,6 @@ class OtherInfoTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.text = "Hi"
-        label.font = .systemFont(ofSize: 24, weight: .bold)
         
         return label
     }()
@@ -41,7 +61,7 @@ class OtherInfoTableViewCell: UITableViewCell {
 }
 
 extension OtherInfoTableViewCell {
-    func update(repositoryName: String, description: String?, imageURL: String) {
-        // repositoryNamelabel.text = repositoryName
+    func update(info: String) {
+        infoLabel.text = info
     }
 }

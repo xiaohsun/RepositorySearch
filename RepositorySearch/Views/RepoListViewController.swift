@@ -104,13 +104,14 @@ extension RepoListViewController: UITableViewDelegate, UITableViewDataSource {
         let name = viewModel.repositories.value[indexPath.row].fullName
         let description = viewModel.repositories.value[indexPath.row].description
         let imageURL = viewModel.repositories.value[indexPath.row].owner.avatarURL
-        cell.update(repositoryName: name, description: description, imageURL: imageURL)
+        cell.update(repositoryName: name, description: description, imageURL: imageURL!)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
+        detailVC.viewModel.repository = viewModel.repositories.value[indexPath.row]
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

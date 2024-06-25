@@ -15,7 +15,6 @@ class DetailTableViewHeaderView: UITableViewHeaderFooterView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .black
         
         return imageView
     }()
