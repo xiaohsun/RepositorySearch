@@ -110,7 +110,8 @@ extension RepoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+        let detailVC = DetailViewController()
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

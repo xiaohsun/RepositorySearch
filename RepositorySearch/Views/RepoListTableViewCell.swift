@@ -25,7 +25,7 @@ class RepoListTableViewCell: UITableViewCell {
         return view
     }()
     
-    lazy var repositoryNamelabel: UILabel = {
+    lazy var repositoryNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -35,7 +35,7 @@ class RepoListTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var descriptionlabel: UILabel = {
+    lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 3
@@ -48,8 +48,8 @@ class RepoListTableViewCell: UITableViewCell {
     private func setupUI() {
         contentView.addSubview(iconImageView)
         contentView.addSubview(containerView)
-        containerView.addSubview(repositoryNamelabel)
-        containerView.addSubview(descriptionlabel)
+        containerView.addSubview(repositoryNameLabel)
+        containerView.addSubview(descriptionLabel)
         
         
         NSLayoutConstraint.activate([
@@ -60,17 +60,17 @@ class RepoListTableViewCell: UITableViewCell {
             iconImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             
             containerView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            containerView.topAnchor.constraint(equalTo: repositoryNamelabel.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: descriptionlabel.bottomAnchor),
+            containerView.topAnchor.constraint(equalTo: repositoryNameLabel.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
             containerView.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 10),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
-            repositoryNamelabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            repositoryNamelabel.bottomAnchor.constraint(equalTo: descriptionlabel.topAnchor, constant: -5),
+            repositoryNameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            repositoryNameLabel.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -5),
             
-            descriptionlabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            descriptionlabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            descriptionlabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
         ])
     }
     
@@ -91,8 +91,8 @@ class RepoListTableViewCell: UITableViewCell {
 
 extension RepoListTableViewCell {
     func update(repositoryName: String, description: String?, imageURL: String) {
-        repositoryNamelabel.text = repositoryName
-        descriptionlabel.text = description
+        repositoryNameLabel.text = repositoryName
+        descriptionLabel.text = description
         iconImageView.kf.setImage(with: URL(string: imageURL))
     }
 }

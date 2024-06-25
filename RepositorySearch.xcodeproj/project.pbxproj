@@ -17,6 +17,12 @@
 		2896F62E2C29D0CA00C5A576 /* RepoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F62D2C29D0CA00C5A576 /* RepoListTableViewCell.swift */; };
 		2896F6302C2A741A00C5A576 /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F62F2C2A741A00C5A576 /* RepositoryModel.swift */; };
 		2896F6382C2A88ED00C5A576 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2896F6372C2A88ED00C5A576 /* Kingfisher */; };
+		2896F63A2C2AAECA00C5A576 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F6392C2AAECA00C5A576 /* DetailViewController.swift */; };
+		2896F63C2C2AAF5D00C5A576 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F63B2C2AAF5D00C5A576 /* DetailViewModel.swift */; };
+		2896F63E2C2AB15800C5A576 /* DetailTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F63D2C2AB15800C5A576 /* DetailTableViewHeaderView.swift */; };
+		2896F6402C2AB2F600C5A576 /* RepositoryNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F63F2C2AB2F600C5A576 /* RepositoryNameTableViewCell.swift */; };
+		2896F6432C2AB4D700C5A576 /* LanguageStarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F6422C2AB4D700C5A576 /* LanguageStarTableViewCell.swift */; };
+		2896F6452C2AB56400C5A576 /* OtherInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F6442C2AB56400C5A576 /* OtherInfoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +37,12 @@
 		2896F62B2C29D0AC00C5A576 /* RepoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewModel.swift; sourceTree = "<group>"; };
 		2896F62D2C29D0CA00C5A576 /* RepoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListTableViewCell.swift; sourceTree = "<group>"; };
 		2896F62F2C2A741A00C5A576 /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
+		2896F6392C2AAECA00C5A576 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2896F63B2C2AAF5D00C5A576 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		2896F63D2C2AB15800C5A576 /* DetailTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewHeaderView.swift; sourceTree = "<group>"; };
+		2896F63F2C2AB2F600C5A576 /* RepositoryNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryNameTableViewCell.swift; sourceTree = "<group>"; };
+		2896F6422C2AB4D700C5A576 /* LanguageStarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageStarTableViewCell.swift; sourceTree = "<group>"; };
+		2896F6442C2AB56400C5A576 /* OtherInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherInfoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				2896F62B2C29D0AC00C5A576 /* RepoListViewModel.swift */,
+				2896F63B2C2AAF5D00C5A576 /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -98,8 +111,21 @@
 			children = (
 				2896F61B2C29BBE100C5A576 /* RepoListViewController.swift */,
 				2896F62D2C29D0CA00C5A576 /* RepoListTableViewCell.swift */,
+				2896F6412C2AB30200C5A576 /* DetailViewController */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2896F6412C2AB30200C5A576 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2896F6392C2AAECA00C5A576 /* DetailViewController.swift */,
+				2896F63D2C2AB15800C5A576 /* DetailTableViewHeaderView.swift */,
+				2896F63F2C2AB2F600C5A576 /* RepositoryNameTableViewCell.swift */,
+				2896F6422C2AB4D700C5A576 /* LanguageStarTableViewCell.swift */,
+				2896F6442C2AB56400C5A576 /* OtherInfoTableViewCell.swift */,
+			);
+			path = DetailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,9 +208,15 @@
 				2896F62C2C29D0AC00C5A576 /* RepoListViewModel.swift in Sources */,
 				2896F62E2C29D0CA00C5A576 /* RepoListTableViewCell.swift in Sources */,
 				2896F61C2C29BBE100C5A576 /* RepoListViewController.swift in Sources */,
+				2896F6432C2AB4D700C5A576 /* LanguageStarTableViewCell.swift in Sources */,
 				2896F6302C2A741A00C5A576 /* RepositoryModel.swift in Sources */,
 				2896F6182C29BBE100C5A576 /* AppDelegate.swift in Sources */,
 				2896F61A2C29BBE100C5A576 /* SceneDelegate.swift in Sources */,
+				2896F63C2C2AAF5D00C5A576 /* DetailViewModel.swift in Sources */,
+				2896F6452C2AB56400C5A576 /* OtherInfoTableViewCell.swift in Sources */,
+				2896F63A2C2AAECA00C5A576 /* DetailViewController.swift in Sources */,
+				2896F6402C2AB2F600C5A576 /* RepositoryNameTableViewCell.swift in Sources */,
+				2896F63E2C2AB15800C5A576 /* DetailTableViewHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

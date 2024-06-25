@@ -39,7 +39,6 @@ class RepoListViewModel {
             .replaceError(with: [])
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] repositories in
-                print(repositories)
                 self?.repositories.send(repositories)
             })
             .store(in: &subscriptions)
