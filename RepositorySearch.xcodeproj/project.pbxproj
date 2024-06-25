@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		2896F6182C29BBE100C5A576 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F6172C29BBE100C5A576 /* AppDelegate.swift */; };
 		2896F61A2C29BBE100C5A576 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F6192C29BBE100C5A576 /* SceneDelegate.swift */; };
-		2896F61C2C29BBE100C5A576 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F61B2C29BBE100C5A576 /* ViewController.swift */; };
+		2896F61C2C29BBE100C5A576 /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F61B2C29BBE100C5A576 /* RepoListViewController.swift */; };
 		2896F61F2C29BBE100C5A576 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2896F61D2C29BBE100C5A576 /* Main.storyboard */; };
 		2896F6212C29BBE300C5A576 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2896F6202C29BBE300C5A576 /* Assets.xcassets */; };
 		2896F6242C29BBE300C5A576 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2896F6222C29BBE300C5A576 /* LaunchScreen.storyboard */; };
+		2896F62C2C29D0AC00C5A576 /* RepoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F62B2C29D0AC00C5A576 /* RepoListViewModel.swift */; };
+		2896F62E2C29D0CA00C5A576 /* RepoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2896F62D2C29D0CA00C5A576 /* RepoListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2896F6142C29BBE100C5A576 /* RepositorySearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepositorySearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2896F6172C29BBE100C5A576 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2896F6192C29BBE100C5A576 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2896F61B2C29BBE100C5A576 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2896F61B2C29BBE100C5A576 /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
 		2896F61E2C29BBE100C5A576 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2896F6202C29BBE300C5A576 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2896F6232C29BBE300C5A576 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2896F6252C29BBE300C5A576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2896F62B2C29D0AC00C5A576 /* RepoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewModel.swift; sourceTree = "<group>"; };
+		2896F62D2C29D0CA00C5A576 /* RepoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +62,9 @@
 			children = (
 				2896F6172C29BBE100C5A576 /* AppDelegate.swift */,
 				2896F6192C29BBE100C5A576 /* SceneDelegate.swift */,
-				2896F61B2C29BBE100C5A576 /* ViewController.swift */,
+				2896F61B2C29BBE100C5A576 /* RepoListViewController.swift */,
+				2896F62D2C29D0CA00C5A576 /* RepoListTableViewCell.swift */,
+				2896F62B2C29D0AC00C5A576 /* RepoListViewModel.swift */,
 				2896F61D2C29BBE100C5A576 /* Main.storyboard */,
 				2896F6202C29BBE300C5A576 /* Assets.xcassets */,
 				2896F6222C29BBE300C5A576 /* LaunchScreen.storyboard */,
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2896F61C2C29BBE100C5A576 /* ViewController.swift in Sources */,
+				2896F62C2C29D0AC00C5A576 /* RepoListViewModel.swift in Sources */,
+				2896F62E2C29D0CA00C5A576 /* RepoListTableViewCell.swift in Sources */,
+				2896F61C2C29BBE100C5A576 /* RepoListViewController.swift in Sources */,
 				2896F6182C29BBE100C5A576 /* AppDelegate.swift in Sources */,
 				2896F61A2C29BBE100C5A576 /* SceneDelegate.swift in Sources */,
 			);
@@ -300,6 +308,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,6 +337,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
