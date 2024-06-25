@@ -19,6 +19,8 @@ class RepoListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(RepoListTableViewCell.self, forCellReuseIdentifier: RepoListTableViewCell.reuseIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
         return tableView
     }()
     
@@ -72,7 +74,10 @@ extension RepoListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RepoListTableViewCell.reuseIdentifier, for: indexPath) as? RepoListTableViewCell else { return UITableViewCell() }
-        cell.label.text = viewModel.repositories.value[indexPath.row].fullName
+        let name = viewModel.repositories.value[indexPath.row].fullName
+        let description = viewModel.repositories.value[indexPath.row].description
+        let imageURL = viewModel.repositories.value[indexPath.row].owner.avatarURL
+        cell.update(repositoryName: name, description: description, imageURL: imageURL)
         
         return cell
     }
