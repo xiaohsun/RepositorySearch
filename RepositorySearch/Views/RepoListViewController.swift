@@ -24,14 +24,45 @@ class RepoListViewController: UIViewController {
         return tableView
     }()
     
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshToLoad), for: UIControl.Event.valueChanged)
+        return refreshControl
+    }()
+    
     lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
         searchBar.placeholder = "請輸入關鍵字搜尋"
+        searchBar.delegate = self
         return searchBar
     }()
     
+    private func fetchData() {
+        if let text = searchBar.text {
+            viewModel.fetchRepositories(query: text)
+            viewModel.repositories.sink { [weak self] _ in
+                self?.repoListTableView.reloadData()
+                self?.clearSearchBar()
+                self?.refresher.endRefreshing()
+            }.store(in: &cancellables)
+        }
+    }
+    
+    @objc private func refreshToLoad(){
+        fetchData()
+    }
+    
+    private func clearSearchBar() {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
     private func addSearchBar() {
         repoListTableView.tableHeaderView = searchBar
+    }
+    
+    private func setUpRefresher() {
+        repoListTableView.addSubview(refresher)
     }
     
     private func setupUI() {
@@ -50,11 +81,7 @@ class RepoListViewController: UIViewController {
         
         setupUI()
         addSearchBar()
-        
-        viewModel.fetchRepositories(query: "Swift")
-        viewModel.repositories.sink { [weak self] _ in
-            self?.repoListTableView.reloadData()
-        }.store(in: &cancellables)
+        setUpRefresher()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +111,12 @@ extension RepoListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
+    }
+}
+
+extension RepoListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        fetchData()
     }
 }
 
